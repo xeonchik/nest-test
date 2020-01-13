@@ -9,6 +9,7 @@ export class MessageController {
 
     @Post()
     async create(@Body() createMessageDto: CreateMessageDto) {
+        console.info(createMessageDto.message);
         await this.messageService.create(createMessageDto);
     }
 
