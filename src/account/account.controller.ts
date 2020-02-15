@@ -1,6 +1,5 @@
 import {Body, Controller, HttpException, Post} from '@nestjs/common';
 import {CreateAccountDto} from './dto/create-account.dto';
-import {AccountDuplicatedError} from './errors/account.duplicated.error';
 import {DbService} from '../db/db.service';
 import {DataDuplicationError} from '../db/errors/data.duplication.error';
 
@@ -10,6 +9,8 @@ export class AccountController {
     }
     @Post()
     async create(@Body() accountData: CreateAccountDto) {
+        accountData.createdAt = new Date();
+
         try {
             return await this.dbService.createAccount(accountData);
         } catch (e) {

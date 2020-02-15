@@ -4,5 +4,5 @@ export const AccountSchema = new mongoose.Schema({
     login: String,
     password: String,
     avatar: Buffer,
-    createAt: Date
+    createdAt: Date
 });
